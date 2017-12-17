@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>停车场系统</title>
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}"/>
+    <style>
+        th{
+            text-align:center;
+            vertical-align: middle!important;
+            width:90px;
+        }
+        img{
+            max-width: 80px;
+        }
+        tr{
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 巨幕-->
+<div class="jumbotron">
+    <div class="container">
+        <div class="col-md-5">
+            <h2 class="pull-left"><b>欢迎进入停车场管理系统</b></h2>
+        </div>
+    </div>
+</div>
+<div class="container col-md-2">
+    <ul class="nav nav-pills nav-stacked">
+        <li style="text-align:center;"><a th:href="@{/parkInfo}">停车场信息</a></li>
+        <li class="active" style="text-align:center;"><a th:href="@{/topology}">拓扑图</a></li>
+    </ul>
+</div>
+
+<div class="tab-pane" id="plan" style="margin-left:300px;margin-bottom: 50px;">
+    <label style="margin-bottom: 30px; font-size: large">拓扑图：</label>
+    <div>
+        <form th:action="@{/start}">
+            <input id="connect" type="submit" onclick="subSend()" th:name="start" value="开始"/>
+            <input id="noconnect" type="submit" th:name="stop" value="结束"/>
+            <input id="1" type="submit" onclick="connection()" value="hh"/>
+
+        </form>
+
+        <table  style="margin-top:30px;width:70%;frame:void;">
+
+            <tr>
+                <th>
+                    <img th:src="@{img/park-1.jpg}" />
+                </th>
+
+                <th>
+                    <img th:src="@{img/park-1.jpg}" />
+                </th>
+                <th>
+                    <img th:src="@{img/park-1.jpg}" />
+                </th>
+                <th>
+                    <img th:src="@{img/park-1.jpg}" />
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <img th:src="@{img/park-1.jpg}" />
+                </th>
+
+                <th>
+                    <img th:src="@{img/park-1.jpg}" />
+                </th>
+                <th>
+                    <img th:src="@{img/park-1.jpg}" />
+                </th>
+                <th>
+                    <img th:src="@{img/park-1.jpg}" />
+                </th>
+            </tr>
+        </table>
+        <div id = "content">
+
+        </div>
+    </div>
+</div>
+
+
+<script th:src="@{js/jquery.min.js}"></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
+<script type="text/javascript">
+        var ws;//通信管道
+        var target="ws://localhokt:8080/parking/websocket";
+        function connection() {
+
+
+        //window.onload = function () {
+            if ('WebSocket' in window) {
+                ws = new WebSocket(target);
+                alert('WebSocket is not supported by this browser.');
+
+            } else if ('MozWebSocket' in window) {
+                ws = new MozWebSocket(target);
+            } else {
+                alert('WebSocket is not supported by this browser.');
+                return;
+            }
+            ws.onmessage = function (event) {
+                eval("var msg = " + event.data + ";");
+                if(undefined != msg.information){
+                    $("#content").html("");
+                    $("#content").append(msg.information)
+                }
+
+            }
+       // }
+        }
+        function subSend() {
+
+           // window.setTimeout(subsend,5100);
+            //function subsend() {
+                ws.send();
+            //}k
+        }
+</script>
+</body>
+</html>
+
+

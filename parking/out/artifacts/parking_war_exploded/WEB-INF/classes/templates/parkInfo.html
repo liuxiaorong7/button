@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>停车场系统</title>
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}"/>
+    <style>
+        th{
+            text-align:center;
+            vertical-align: middle!important;
+        }
+
+        body{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 巨幕-->
+<div class="jumbotron">
+    <div class="container">
+        <div class="col-md-5">
+            <h2 class="pull-left"><b>欢迎进入停车场管理系统</b></h2>
+        </div>
+    </div>
+</div>
+<!-- 左导航-->
+<div class="container col-md-2">
+    <ul class="nav nav-pills nav-stacked">
+        <li class="active" style="text-align:center;"><a th:href="@{/parkInfo.html}">停车场信息</a></li>
+        <li style="text-align:center;"><a th:href="@{/topology}">拓扑图</a></li>
+    </ul>
+</div>
+<div class="tab-pane" id="plan" style="margin-left:300px;margin-bottom: 70px;">
+    <label style="margin-bottom: 30px; font-size: large">停车场信息：</label>
+    <div>
+        <table class="table table-bordered" style="width:800px;">
+            <thead>
+            <tr>
+                <th style="width:140px;">
+                    编号
+                </th>
+
+                <th style="width:250px">
+                    名称
+                </th>
+                <th style="width:300px">
+                    类型
+                </th>
+                <th style="width:200px">
+                    地址
+                </th>
+                <th style="width:200px">
+                    x
+                </th>
+                <th style="width:200px">
+                    y
+                </th>
+                <th style="width:200px">
+                    停车位数
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each= "park,parkStat: ${parkList}">
+                <th style="width:100px" th:text="${park.parkId}">
+                    001
+                </th>
+
+                <th style="width:250px" th:text="${park.name}">
+                    A
+                </th>
+                <th style="width:300px" th:text="${park.type}">
+                    普通
+                </th>
+                <th style="width:200px" th:text="${park.address}">
+                    一排一号
+                </th>
+                <th style="width:300px" th:text="${park.x}">
+                    0
+                </th>
+                <th style="width:200px" th:text="${park.y}">
+                    0
+                </th>
+                <th style="width:200px" th:text="${park.n}">
+                    50
+                </th>
+            </tr>
+            </tbody>
+
+
+        </table>
+    </div>
+</div>
+<!--<form th:action="@{/index}" method="post">
+    username:<input type="text" th:name="username" />
+    <br />class="active"
+    password:<input type="text" th:name="password" />
+    <br />
+    <input value="登录" type="submit" onclick="login()"/>
+</form>
+<script type="text/javascript">
+    function login(){
+        $
+    }
+
+</script>
+
+
+
+-->
+<script th:src="@{js/jquery.min.js}"></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
+</body>
+</html>

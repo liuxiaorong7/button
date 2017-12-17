@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>停车场系统</title>
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}"/>
+    <style>
+        th{
+            text-align:center;
+            vertical-align: middle!important;
+            width:90px;
+        }
+        img{
+            max-width: 80px;
+        }
+        tr{
+            margin-bottom: 30px;
+        }
+        #loginModal1 #loginModal2 #loginModal3 #loginModal4 #loginModal5 #loginModal6 #loginModal7 #loginModal8{
+            position: relative;
+            float: left;
+        }
+        .modal-dialog{
+            height: 100%;
+            width: 400px;
+            position: relative;
+            float: left;
+        }
+        .close{
+            margin-right: 5px;
+            margin-top: 5px;
+        }
+        h1{
+            padding-top: 30px;
+        }
+        img{
+            cursor:pointer;
+        }
+        #content{
+            font-size:18px;
+        }
+    </style>
+</head>
+<body>
+<!-- 巨幕-->
+<div class="jumbotron"  style="background-color: #005689">
+    <div class="container">
+        <div class="col-md-5">
+            <h2 class="pull-left" style="color:white;"><b>欢迎进入停车场管理系统</b></h2>
+        </div>
+    </div>
+</div>
+<div class="container col-md-2">
+    <ul class="nav nav-pills nav-stacked">
+        <li style="text-align:center;"><a th:href="@{/parkInfo}">停车场信息</a></li>
+        <li class="active" style="text-align:center;"><a th:href="@{/topology}">拓扑图</a></li>
+    </ul>
+</div>
+<div class="tab-pane" id="plan" style="margin-left:300px;margin-bottom: 50px;">
+    <label style="margin-bottom: 30px; font-size: large">拓扑图：</label>
+    <div>
+        <button onclick="ss()">open</button>
+        <table  style="margin-top:30px;margin-bottom:30px;width:70%;frame:void;">
+            <tr>
+                <th>
+                    <img id="1" title="名称：A&#13;类型：normal&#13;地址：一排一号&#13;容量：50" th:src="@{img/park-1.jpg}" data-toggle="modal" data-target="#loginModal1"/>
+                    <div id="loginModal1" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h1 class="text-center text-primary">详细信息</h1>
+                                <div class="modal-footer" style="padding:32px">
+                                    <p class="text-center">名称：A</p>
+                                    <p class="text-center">类型：普通</p>
+                                    <p class="text-center">地址：一排一号</p>
+                                    <p class="text-center">容量：50</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="text-align:center">A</p>
+                </th>
+                <th>
+                    <img id="2" title="名称：B&#13;类型：normal&#13;地址：一排二号&#13;容量：30" th:src="@{img/park-1.jpg}"  data-toggle="modal" data-target="#loginModal2"/>
+                    <div id="loginModal2" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h1 class="text-center text-primary">详细信息</h1>
+                                <div class="modal-footer" style="padding:32px">
+                                    <p class="text-center">名称：B</p>
+                                    <p class="text-center">类型：普通</p>
+                                    <p class="text-center">地址：一排二号</p>
+                                    <p class="text-center">容量：30</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="text-align:center">B</p>
+                </th>
+                <th>
+                    <img id="3" title="名称：C&#13;类型：special&#13;地址：一排三号&#13;容量：10" th:src="@{img/park-1.jpg}" data-toggle="modal" data-target="#loginModal3"/>
+                    <div id="loginModal3" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h1 class="text-center text-primary">详细信息</h1>
+                                <div class="modal-footer" style="padding:32px">
+                                    <p class="text-center">名称：C</p>
+                                    <p class="text-center">类型：特殊</p>
+                                    <p class="text-center">地址：一排三号</p>
+                                    <p class="text-center">容量：10</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="text-align:center">C</p>
+                </th>
+                <th>
+                    <img id="4" title="名称：D&#13;类型：normal&#13;地址：一排四号&#13;容量：45" th:src="@{img/park-1.jpg}" data-toggle="modal" data-target="#loginModal4"/>
+                    <div id="loginModal4" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h1 class="text-center text-primary">详细信息</h1>
+                                <div class="modal-footer" style="padding:32px">
+                                    <p class="text-center">名称：D</p>
+                                    <p class="text-center">类型：普通</p>
+                                    <p class="text-center">地址：一排四号</p>
+                                    <p class="text-center">容量：45</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="text-align:center">D</p>
+                </th>
+            </tr>
+            <tr>
+                <th>
+                    <img id="5" title="名称：E&#13;类型：special&#13;地址：二排一号&#13;容量：15" th:src="@{img/park-1.jpg}"  data-toggle="modal" data-target="#loginModal5"/>
+                    <div id="loginModal5" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h1 class="text-center text-primary">详细信息</h1>
+                                <div class="modal-footer" style="padding:32px">
+                                    <p class="text-center">名称：E</p>
+                                    <p class="text-center">类型：特殊</p>
+                                    <p class="text-center">地址：二排一号</p>
+                                    <p class="text-center">容量：15</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="text-align:center">E</p>
+                </th>
+                <th>
+                    <img id="6" title="名称：F&#13;类型：normal&#13;地址：二排二号&#13;容量：50" th:src="@{img/park-1.jpg}" data-toggle="modal" data-target="#loginModal6"/>
+                    <div id="loginModal6" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h1 class="text-center text-primary">详细信息</h1>
+                                <div class="modal-footer" style="padding:32px">
+                                    <p class="text-center">名称：F</p>
+                                    <p class="text-center">类型：普通</p>
+                                    <p class="text-center">地址：二排二号</p>
+                                    <p class="text-center">容量：50</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="text-align:center">F</p>
+                </th>
+                <th>
+                    <img id="7" title="名称：G&#13;类型：normal&#13;地址：二排三号&#13;容量：30" th:src="@{img/park-1.jpg}" data-toggle="modal" data-target="#loginModal7"/>
+                    <div id="loginModal7" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h1 class="text-center text-primary">详细信息</h1>
+                                <div class="modal-footer" style="padding:32px">
+                                    <p class="text-center">名称：G</p>
+                                    <p class="text-center">类型：普通</p>
+                                    <p class="text-center">地址：二排三号</p>
+                                    <p class="text-center">容量：30</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="text-align:center">G</p>
+                </th>
+                <th>
+                    <img id="8" title="名称：H&#13;类型：special&#13;地址：二排四号&#13;容量：10" th:src="@{img/park-1.jpg}" data-toggle="modal" data-target="#loginModal8"/>
+                    <div id="loginModal8" class="modal fade">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                <h1 class="text-center text-primary">详细信息</h1>
+                                <div class="modal-footer" style="padding:32px">
+                                    <p class="text-center">名称：H</p>
+                                    <p class="text-center">类型：特殊</p>
+                                    <p class="text-center">地址：二排四号</p>
+                                    <p class="text-center">容量：10</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="text-align:center">H</p>
+                </th>
+            </tr>
+        </table>
+        <div id = "content"></div>
+    </div>
+</div>
+<script th:src="@{js/jquery.min.js}"></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
+<script th:src="@{js/sendMessage.js}"></script>
+<script type="text/javascript">
+        var ws;//通信管道
+        var target="ws://localhost:8888/websocket";
+      // window.onload = function () {
+       function ss() {
+            if ('WebSocket' in window) {
+                ws = new WebSocket(target);
+               // alert('WebSocket is supported by this browser.');
+            } else if ('MozWebSocket' in window) {
+                ws = new MozWebSocket(target);
+            } else {
+                alert('WebSocket is not supported by this browser.');
+            }
+            ws.onmessage = function (event) {
+                var content = document.getElementById("content");
+                content.innerHTML = event.data;
+                 var str = event.data;
+                 var changeId = str.substr(0,1);
+                document.getElementById(changeId).src="img/park-10.jpg";
+                window.setTimeout(function () {
+                    document.getElementById(changeId).src="img/park-1.jpg";
+                    //document.getElementById(changeId).title = "剩余车辆："+ str.substr(-1);
+                },1500);
+                /**
+                    //console.info(data);
+                var content = document.getElementById("content");
+                content.innerHTML = event.data;
+                  document.getElementById(changeId).src="img/park-10.jpg";
+                  window.setTimeout(function () {
+                    document.getElementById(changeId).src="@{img/park-1.jpg}";
+                },1000);
+                  名称 B&#13;类型 normal&#13;地址 一排二号&#13;容量 30
+                  eval("var msg = " + event.data + ";");
+                  if(undefined != msg.information){
+                    $("#content").html("");
+                    $("#content").append(msg.information)
+                }
+                  var changeId = msg.infomation.substr(0,1);
+                  alert(changeId);**/
+            };
+            ws.onerror = function () {
+                document.getElementById('content').innerHTML = "error";
+            };
+            ws.onclose = function () {
+                //document.getElementById('content').innerHTML = "close";
+            };
+            ws.onopen = function () {
+                //document.getElementById('content').innerHTML = "open";
+            };
+     }
+        function subSend() {
+            window.setInterval(function send() {
+                var msg = document.getElementById("1").value;
+                ws.send(msg);
+                document.getElementById("1").value = "";
+            },1000);
+       }
+
+</script>
+</body>
+</html>
+
+
