@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>停车场系统</title>
+    <link rel="stylesheet" th:href="@{css/bootstrap.min.css}"/>
+</head>
+<body>
+<!-- 巨幕-->
+<div class="jumbotron" style="background-color: #005689">
+    <div class="container">
+        <div class="col-md-5">
+            <h2 class="pull-left" style="color:white;"><b>欢迎进入停车场管理系统</b></h2>
+        </div>
+    </div>
+</div>
+<!--
+<div class="container col-md-2">
+    <ul class="nav nav-pills nav-stacked">
+        <li style="text-align:center;"><a th:href="@{/parkInfo}">停车场信息</a></li>
+        <li class="active" style="text-align:center;"><a th:href="@{/topology}">拓扑图</a></li>
+    </ul>
+</div>
+-->
+<div class="tab-pane" id="plan" style="margin-left:200px;margin-bottom: 50px;">
+    <label style="margin-bottom: 30px; font-size: large">按钮端</label>
+    <div>
+        <form th:action="@{/start}">
+            <input type="submit" th:name="insert" value="进车"/>
+            <input type="submit" th:name="delete" value="出车"/>
+        </form>
+    </div>
+</div>
+<script th:src="@{js/jquery.min.js}"></script>
+<script th:src="@{js/bootstrap.min.js}"></script>
+<script th:src="@{js/sendMessage.js}"></script>
+</body>
+</html>
+
+
